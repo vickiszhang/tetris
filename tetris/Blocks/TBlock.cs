@@ -6,33 +6,16 @@ using System.Threading.Tasks;
 
 namespace tetris.Blocks
 {
-    public class TBlock : Block
+    class TBlock : Block
     {
-        /*
-         positions
 
-        # default, right, down, left
-
-        OXO
-        XXX
-        OOO
-
-        OXO
-        OXX
-        OXO
-
-        OOO
-        XXX
-        OXO
-
-        OXO
-        XXO
-        OXO
-         
-         */
-
-
-
+        public Coordinate[,] coordinates = new Coordinate[,]
+        {
+            {new(0, -1), new(-1, 0), new(0, 0), new(1, 0)},
+            {new(0, -1), new(0, 0), new(1, 0), new(0, 1)},
+            {new(-1, 0), new(0, 0), new(1, 0), new(0, 1)},
+            {new(0, -1), new(-1, 0), new(0, 0), new(0, 1)}
+        };
 
     }
 }
