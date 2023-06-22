@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tetris.Blocks
 {
-    class TBlock : Block
+    class ZBlock : Block
     {
 
         public Coordinate[,] coordinates = new Coordinate[,]
@@ -19,3 +19,4 @@ namespace tetris.Blocks
 
     }
 }
+
