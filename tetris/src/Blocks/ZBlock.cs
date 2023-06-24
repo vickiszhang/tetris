@@ -10,6 +10,7 @@ namespace tetris.src.Blocks
     public class ZBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
+        public override int BlockId => 7;
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]
         {

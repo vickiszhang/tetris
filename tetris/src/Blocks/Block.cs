@@ -10,13 +10,22 @@ namespace tetris.src.Blocks
 {
     public abstract class Block
     {
-        public virtual Coordinate[][] Coordinates { get; } = null!;
+        public abstract Coordinate[][] Coordinates { get; }
+        public abstract int BlockId { get; }
+
+        protected Coordinate offset = new(4, 1);
+
+        public virtual Coordinate Offset
+        {
+            get { return offset; }
+            set { offset = value; }
+        }
+
         public Coordinate[] DefaultOrientation { get; set; }
 
         public Coordinate[] CurrentOrientation { get; set; }
 
         public Coordinate position = new(0, 0);
-        public int BlockId { get; set; }
 
         public static int BlockCount { get; set; } = 0;
 
@@ -27,8 +36,15 @@ namespace tetris.src.Blocks
             BlockCount++;
             DefaultOrientation = Coordinates[0];
             CurrentOrientation = Coordinates[0];
-            BlockId = BlockCount;
             
+        }
+
+        public IEnumerable<Coordinate> TilePositions()
+        {
+            foreach (Coordinate c in CurrentOrientation)
+            {
+                yield return new Coordinate(c.X + offset.X, c.Y + offset.Y);
+            }
         }
 
         public void Move(int x, int y)

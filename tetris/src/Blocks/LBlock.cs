@@ -10,6 +10,7 @@ namespace tetris.src.Blocks
     public class LBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
+        public override int BlockId => 3;
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]
         {

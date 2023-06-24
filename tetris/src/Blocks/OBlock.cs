@@ -10,6 +10,13 @@ namespace tetris.src.Blocks
     public class OBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
+        public override int BlockId => 4;
+
+        public override Coordinate Offset
+        {
+            get { return new(4, 0); }
+            set { base.Offset = value; }
+        }
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]
         {
