@@ -7,7 +7,7 @@ using tetris.src;
 
 namespace tetris.src.Blocks
 {
-    class ZBlock : Block
+    public class ZBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
 

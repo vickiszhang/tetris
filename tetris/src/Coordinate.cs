@@ -17,5 +17,24 @@ namespace tetris.src
             Y = y;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is Coordinate other)
+            {
+                return X == other.X && Y == other.Y;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + X.GetHashCode();
+                hash = hash * 23 + Y.GetHashCode();
+                return hash;
+            }
+        }
     }
 }
