@@ -8,13 +8,14 @@ namespace tetris.Blocks
 {
     class IBlock : Block
     {
+        public override Coordinate[][] Coordinates => coordinates;
 
-        public Coordinate[,] coordinates = new Coordinate[,]
+        private readonly Coordinate[][] coordinates = new Coordinate[][]
         {
-            {new(-1, 0), new(0, 0), new(1, 0), new(2, 0)},
-            {new(1, -1), new(1, 0), new(1, 1), new(1, 2)},
-            {new(-1, 1), new(0, 1), new(1, 1), new(2, 1)},
-            {new(0, -1), new(0, 0), new(0, 1), new(0, 2)}
+            new Coordinate[] {new(-1, 0), new(0, 0), new(1, 0), new(2, 0)},
+            new Coordinate[] {new(1, -1), new(1, 0), new(1, 1), new(1, 2)},
+            new Coordinate[] {new(-1, 1), new(0, 1), new(1, 1), new(2, 1)},
+            new Coordinate[] {new(0, -1), new(0, 0), new(0, 1), new(0, 2)}
         };
 
     }

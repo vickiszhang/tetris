@@ -16,5 +16,6 @@ namespace tetris
             X = x;
             Y = y;
         }
+
     }
 }
