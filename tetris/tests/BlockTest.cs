@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using tetris.src.Blocks;
 using tetris.src;
+using NUnit.Framework.Constraints;
+using System.Windows.Documents;
 
 namespace tetris.tests
 {
@@ -14,53 +16,78 @@ namespace tetris.tests
     [TestFixture]
     public class BlockTests
     {
-        [Test]
-        public void DefaultCoordinates_Should_Return_Correct_Values()
+        private src.Blocks.Block tblock = null!;
+
+        [SetUp]
+        public void Setup()
         {
-            // Arrange
-            Block block = new SBlock();
-
-            // Act
-            Coordinate[,] coordinates = block.Coordinates;
-
-            // Assert
-            Assert.AreEqual(new Coordinate(0, -1), coordinates[0, 0]);
-            Assert.AreEqual(new Coordinate(1, -1), coordinates[0, 1]);
-            Assert.AreEqual(new Coordinate(-1, 0), coordinates[0, 2]);
-            Assert.AreEqual(new Coordinate(0, 0), coordinates[0, 3]);
+            tblock = new TBlock();
         }
 
         [Test]
-        public void RotateRight_Should_Update_CurrentPosition_Correctly()
+        public void TestConstructor()
         {
-            // Arrange
-            Block block = new SBlock();
-
-            // Act
-            block.RotateRight();
-
-            // Assert
-            Assert.AreEqual(new Coordinate(0, -1), block.CurrentPosition[0]);
-            Assert.AreEqual(new Coordinate(0, 0), block.CurrentPosition[1]);
-            Assert.AreEqual(new Coordinate(1, 0), block.CurrentPosition[2]);
-            Assert.AreEqual(new Coordinate(1, 1), block.CurrentPosition[3]);
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(-1, 0), new(0, 0), new(1, 0) }, 
+                tblock.DefaultOrientation);
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(-1, 0), new(0, 0), new(1, 0) },
+                tblock.CurrentOrientation);
+            Assert.AreEqual(new Coordinate (0, 0), tblock.position);
+            Assert.AreEqual(1, src.Blocks.Block.BlockCount);
+            Assert.AreEqual(1, tblock.BlockId);
         }
 
         [Test]
-        public void RotateLeft_Should_Update_CurrentPosition_Correctly()
+        public void TestMove()
         {
-            // Arrange
-            Block block = new SBlock();
-
-            // Act
-            block.RotateLeft();
-
-            // Assert
-            Assert.AreEqual(new Coordinate(-1, 0), block.CurrentPosition[0]);
-            Assert.AreEqual(new Coordinate(0, 0), block.CurrentPosition[1]);
-            Assert.AreEqual(new Coordinate(1, 0), block.CurrentPosition[2]);
-            Assert.AreEqual(new Coordinate(-1, 1), block.CurrentPosition[3]);
+            tblock.Move(5, 5);
+            Assert.AreEqual(new Coordinate(5, 5), tblock.position);
+            tblock.Move(-7, -4);
+            Assert.AreEqual(new Coordinate(-2, 1), tblock.position);
         }
+
+        [Test]
+        public void TestRotateRight()
+        {
+            tblock.RotateRight();
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(0, 0), new(1, 0), new(0, 1) },
+                tblock.CurrentOrientation);
+            tblock.RotateRight();
+            Assert.AreEqual(new Coordinate[] { new(-1, 0), new(0, 0), new(1, 0), new(0, 1) },
+                tblock.CurrentOrientation);
+            tblock.RotateRight();
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(-1, 0), new(0, 0), new(0, 1) },
+                tblock.CurrentOrientation);
+            tblock.RotateRight();
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(-1, 0), new(0, 0), new(1, 0) },
+                tblock.CurrentOrientation);
+        }
+
+        public void TestRotateLeft()
+        {
+            tblock.RotateLeft();
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(-1, 0), new(0, 0), new(0, 1) },
+                tblock.CurrentOrientation);
+            tblock.RotateLeft();
+            Assert.AreEqual(new Coordinate[] { new(-1, 0), new(0, 0), new(1, 0), new(0, 1) },
+                tblock.CurrentOrientation);
+            tblock.RotateLeft();
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(0, 0), new(1, 0), new(0, 1) },
+                tblock.CurrentOrientation);
+            tblock.RotateLeft();
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(-1, 0), new(0, 0), new(1, 0) },
+                tblock.CurrentOrientation);
+        }
+
+        [Test]
+        public void TestResetOrientation()
+        {
+            tblock.RotateRight();
+            tblock.RotateRight();
+            tblock.ResetOrientation();
+            Assert.AreEqual(new Coordinate[] { new(0, -1), new(-1, 0), new(0, 0), new(1, 0) },
+                tblock.CurrentOrientation);
+        }
+
     }
 
 }

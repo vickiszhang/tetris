@@ -18,17 +18,17 @@ namespace tetris.src.Blocks
         public Coordinate position = new(0, 0);
         public int BlockId { get; set; }
 
-        private static int blockCount = 0;
+        public static int BlockCount { get; set; } = 0;
 
 
 
         protected Block()
         {
+            BlockCount++;
             DefaultOrientation = Coordinates[0];
             CurrentOrientation = Coordinates[0];
-            BlockId = blockCount;
-            blockCount++;
-
+            BlockId = BlockCount;
+            
         }
 
         public void Move(int x, int y)
@@ -51,6 +51,11 @@ namespace tetris.src.Blocks
             int newIndex = (currentIndex + 1) % Coordinates.Length;
             CurrentOrientation = Coordinates[newIndex];
 
+        }
+
+        public void ResetOrientation()
+        {
+            CurrentOrientation = DefaultOrientation;
         }
     }
 }
