@@ -4,8 +4,9 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using tetris.src;
 
-namespace tetris.Blocks
+namespace tetris.src.Blocks
 {
     public abstract class Block
     {
@@ -19,7 +20,7 @@ namespace tetris.Blocks
 
         private static int blockCount = 0;
 
-        
+
 
         protected Block()
         {
@@ -27,7 +28,7 @@ namespace tetris.Blocks
             CurrentOrientation = Coordinates[0];
             BlockId = blockCount;
             blockCount++;
-           
+
         }
 
         public void Move(int x, int y)

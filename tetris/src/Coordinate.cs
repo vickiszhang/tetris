@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tetris
+namespace tetris.src
 {
     public class Coordinate
     {
-        public int X {  get; set; }
+        public int X { get; set; }
         public int Y { get; set; }
 
         public Coordinate(int x, int y)

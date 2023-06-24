@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-namespace tetris
+namespace tetris.src
 {
     public class Board
     {
@@ -82,7 +82,7 @@ namespace tetris
         public int ClearFullRows()
         {
             int cleared = 0;
-            for (int r = Rows-1; r >=0; r--)
+            for (int r = Rows - 1; r >= 0; r--)
             {
                 if (IsRowFull(r))
                 {

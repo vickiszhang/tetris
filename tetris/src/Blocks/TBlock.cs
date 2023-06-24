@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tetris.src;
 
-namespace tetris.Blocks
+namespace tetris.src.Blocks
 {
     class TBlock : Block
     {
