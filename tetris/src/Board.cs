@@ -12,20 +12,20 @@ namespace tetris.src
     public class Board
     {
         private readonly int[,] grid;
-        public int Rows { get; }
-        public int Columns { get; }
+        public int X { get; }
+        public int Y { get; }
 
-        public int this[int row, int col]
+        public int this[int x, int y]
         {
-            get => grid[row, col];
-            set => grid[row, col] = value;
+            get => grid[x, y];
+            set => grid[x, y] = value;
         }
 
-        public Board(int rows, int columns)
+        public Board(int x, int y)
         {
-            Rows = rows;
-            Columns = columns;
-            grid = new int[rows, columns];
+            X = x;
+            Y = y;
+            grid = new int[x, y];
         }
 
         public bool IsInside(int r, int c)

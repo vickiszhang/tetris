@@ -25,8 +25,6 @@ namespace tetris.src.Blocks
 
         public Coordinate[] CurrentOrientation { get; set; }
 
-        public Coordinate position = new(0, 0);
-
         public static int BlockCount { get; set; } = 0;
 
 
@@ -39,7 +37,7 @@ namespace tetris.src.Blocks
             
         }
 
-        public IEnumerable<Coordinate> TilePositions()
+        public IEnumerable<Coordinate> WithOffset()
         {
             foreach (Coordinate c in CurrentOrientation)
             {
@@ -49,8 +47,8 @@ namespace tetris.src.Blocks
 
         public void Move(int x, int y)
         {
-            position.X += x;
-            position.Y += y;
+            Offset.X += x;
+            Offset.Y += y;
         }
 
         public void RotateLeft()
