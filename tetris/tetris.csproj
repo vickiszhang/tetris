@@ -8,7 +8,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="src\Blocks\Block.cs" />
+    <Compile Remove="src\Blocks\IBlock.cs" />
+    <Compile Remove="src\Blocks\JBlock.cs" />
+    <Compile Remove="src\Blocks\LBlock.cs" />
+    <Compile Remove="src\Blocks\OBlock.cs" />
+    <Compile Remove="src\Blocks\SBlock.cs" />
+    <Compile Remove="src\Blocks\TBlock.cs" />
+    <Compile Remove="src\Blocks\ZBlock.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="src\Blocks\Block.cs" />
+    <Resource Include="src\Blocks\IBlock.cs" />
+    <Resource Include="src\Blocks\JBlock.cs" />
+    <Resource Include="src\Blocks\LBlock.cs" />
+    <Resource Include="src\Blocks\OBlock.cs" />
+    <Resource Include="src\Blocks\SBlock.cs" />
+    <Resource Include="src\Blocks\TBlock.cs" />
+    <Resource Include="src\Blocks\ZBlock.cs" />
   </ItemGroup>
 
 </Project>
