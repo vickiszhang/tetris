@@ -17,11 +17,16 @@ namespace tetris.src
 
         public GameState()
         {
-            GameOver = false;
+            GameOver = IsGameOver();
             Score = 0;
             BlockQueue = new Queue();
             ActiveBlock = BlockQueue.NewRandomBlock();
             Board = new Board(rows: 22, columns: 10);
+        }
+
+        private bool IsGameOver()
+        {
+            return !Board.IsRowEmpty(0) && !Board.IsRowEmpty(1);
         }
 
         private bool WithinBoundary()
@@ -77,6 +82,7 @@ namespace tetris.src
             if (!WithinBoundary())
             {
                 ActiveBlock.Move(0, -1);
+                PlaceBlock();
             }
         }
 
@@ -84,7 +90,17 @@ namespace tetris.src
         {
             foreach (Coordinate c in ActiveBlock.WithOffset())
             {
+                Board[c.Y, c.X] = ActiveBlock.BlockId;
+            }
+            Board.ClearFullRows();
 
+            if (IsGameOver())
+            {
+                GameOver = true;
+            }
+            else
+            {
+                ActiveBlock = BlockQueue.NewRandomBlock();
             }
         }
 
