@@ -27,8 +27,6 @@ namespace tetris.src.Blocks
 
         public static int BlockCount { get; set; } = 0;
 
-
-
         protected Block()
         {
             BlockCount++;
