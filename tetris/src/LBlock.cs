@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using tetris.src;
 
-namespace tetris.src.Blocks
+namespace tetris.src
 {
     public class LBlock : Block
     {

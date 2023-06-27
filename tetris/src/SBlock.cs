@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using tetris.src;
 
-namespace tetris.src.Blocks
+namespace tetris.src
 {
-    public class JBlock : Block
+    public class SBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
-        public override int BlockId => 2;
+        public override int BlockId => 5;
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]
-        {
-            new Coordinate[] {new(-1, -1), new(-1, 0), new(0, 0), new(1, 0)},
-            new Coordinate[] {new(0, -1), new(1, -1), new(0, 0), new(0, 1)},
+            {
+            new Coordinate[] {new(0, -1), new(1, -1), new(-1, 0), new(0, 0)},
             new Coordinate[] {new(-1, 0), new(0, 0), new(1, 0), new(1, 1)},
-            new Coordinate[] {new(0, -1), new(0, 0), new(-1, 1), new(1, 0)}
+            new Coordinate[] {new(0, 0), new(1, 0), new(-1, 1), new(0, 1)},
+            new Coordinate[] {new(-1, -1), new(-1, 0), new(0, 0), new(0, 1)}
         };
 
     }

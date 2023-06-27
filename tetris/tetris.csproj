@@ -8,14 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="src\Blocks\Block.cs" />
-    <Compile Remove="src\Blocks\IBlock.cs" />
-    <Compile Remove="src\Blocks\JBlock.cs" />
-    <Compile Remove="src\Blocks\LBlock.cs" />
-    <Compile Remove="src\Blocks\OBlock.cs" />
-    <Compile Remove="src\Blocks\SBlock.cs" />
-    <Compile Remove="src\Blocks\TBlock.cs" />
-    <Compile Remove="src\Blocks\ZBlock.cs" />
+    <Compile Remove="src\Blocks\**" />
+    <EmbeddedResource Remove="src\Blocks\**" />
+    <None Remove="src\Blocks\**" />
+    <Page Remove="src\Blocks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="src\assets\background.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,14 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="src\Blocks\Block.cs" />
-    <Resource Include="src\Blocks\IBlock.cs" />
-    <Resource Include="src\Blocks\JBlock.cs" />
-    <Resource Include="src\Blocks\LBlock.cs" />
-    <Resource Include="src\Blocks\OBlock.cs" />
-    <Resource Include="src\Blocks\SBlock.cs" />
-    <Resource Include="src\Blocks\TBlock.cs" />
-    <Resource Include="src\Blocks\ZBlock.cs" />
+    <Content Include="src\assets\background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="src\Block.cs" />
+    <Resource Include="src\IBlock.cs" />
+    <Resource Include="src\JBlock.cs" />
+    <Resource Include="src\LBlock.cs" />
+    <Resource Include="src\OBlock.cs" />
+    <Resource Include="src\SBlock.cs" />
+    <Resource Include="src\TBlock.cs" />
+    <Resource Include="src\ZBlock.cs" />
   </ItemGroup>
 
 </Project>

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using tetris.src;
 
-namespace tetris.src.Blocks
+namespace tetris.src
 {
-    public class IBlock : Block
+    public class OBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
-        public override int BlockId => 1;
+        public override int BlockId => 4;
 
         public override Coordinate Offset
         {
@@ -20,13 +20,12 @@ namespace tetris.src.Blocks
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]
         {
-            new Coordinate[] {new(-1, 0), new(0, 0), new(1, 0), new(2, 0)},
-            new Coordinate[] {new(1, -1), new(1, 0), new(1, 1), new(1, 2)},
-            new Coordinate[] {new(-1, 1), new(0, 1), new(1, 1), new(2, 1)},
-            new Coordinate[] {new(0, -1), new(0, 0), new(0, 1), new(0, 2)}
+            new Coordinate[] {new(0, 0), new(1, 0), new(0, 1), new(1, 1)},
+            new Coordinate[] {new(0, 0), new(1, 0), new(0, 1), new(1, 1)},
+            new Coordinate[] {new(0, 0), new(1, 0), new(0, 1), new(1, 1)},
+            new Coordinate[] {new(0, 0), new(1, 0), new(0, 1), new(1, 1)}
         };
 
     }
-
 }
 
