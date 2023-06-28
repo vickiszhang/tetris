@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tetris"
         mc:Ignorable="d"
-        Title="Tetris" Height="600" Width="800"
+        Title="Tetris" Height="600" Width="1000"
         MinWidth="600" MinHeight="600"
         Foreground="White"
         FontFamily="Segoe UI Light" FontSize="28"
@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.Background>
-            <ImageBrush ImageSource="src/assets/background.jpg"/>
+            <ImageBrush ImageSource="src/assets/backdrop.jpg"/>
         </Grid.Background>
 
         <Viewbox Grid.Row="1"
@@ -40,7 +40,7 @@
                    Grid.Row="0"
                    Grid.Column="1"
                    Text="Score: "
-                   Margin="0,10"
+                   Margin="0,0"
                    TextAlignment="Center"/>
         <StackPanel Grid.Row="1"
                     Grid.Column="0"

@@ -12,10 +12,12 @@ namespace tetris.src
         public override Coordinate[][] Coordinates => coordinates;
         public override int BlockId => 4;
 
+        private Coordinate offset = new Coordinate(4, 0);
+
         public override Coordinate Offset
         {
-            get { return new(4, 0); }
-            set { base.Offset = value; }
+            get { return offset; }
+            set { offset = value; }
         }
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]

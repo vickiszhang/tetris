@@ -25,7 +25,7 @@ namespace tetris
     {
         private readonly ImageSource[] blockTiles = new ImageSource[]
         {
-            new BitmapImage(new Uri("src/assets/emptyblock.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/TileEmpty.png", UriKind.Relative)),
             new BitmapImage(new Uri("src/assets/Iblock1.png", UriKind.Relative)),
             new BitmapImage(new Uri("src/assets/Iblock1.png", UriKind.Relative)), // TODO: get a new colour
             new BitmapImage(new Uri("src/assets/Lblock3.png", UriKind.Relative)),

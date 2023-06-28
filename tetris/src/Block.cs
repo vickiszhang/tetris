@@ -39,7 +39,7 @@ namespace tetris.src
         {
             foreach (Coordinate c in CurrentOrientation)
             {
-                yield return new Coordinate(c.X + offset.X, c.Y + offset.Y);
+                yield return new Coordinate(c.X + Offset.X, c.Y + Offset.Y);
             }
         }
 
@@ -47,6 +47,8 @@ namespace tetris.src
         {
             Offset.X += x;
             Offset.Y += y;
+
+            //Offset = new Coordinate(Offset.X + x, Offset.Y + y);
         }
 
         public void RotateLeft()

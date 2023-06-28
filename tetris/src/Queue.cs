@@ -35,9 +35,10 @@ namespace tetris.src
 
         public Block NewRandomBlock()
         {
-            Block nextBlock = GetRandomBlock();
-            NextBlock = nextBlock; 
-            return nextBlock;
+
+            Block block = NextBlock;
+            NextBlock = GetRandomBlock();
+            return block;
         }
     }
 }
