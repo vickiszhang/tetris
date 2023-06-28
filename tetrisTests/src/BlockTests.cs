@@ -1,12 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using tetris.src.Blocks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Linq;
 using tetris.src;
 
 namespace tetrisTests.src
@@ -30,18 +22,18 @@ namespace tetrisTests.src
 
             Assert.IsTrue(default_expected.SequenceEqual(tblock.CurrentOrientation));
 
-            Assert.AreEqual(new Coordinate(0, 0), tblock.position);
+            Assert.AreEqual(new Coordinate(4, 1), tblock.Offset);
             Assert.AreEqual(1, Block.BlockCount);
-            Assert.AreEqual(1, tblock.BlockId);
+            Assert.AreEqual(6, tblock.BlockId);
         }
 
         [TestMethod]
         public void TestMove()
         {
             tblock.Move(5, 5);
-            Assert.AreEqual(new Coordinate(5, 5), tblock.position);
+            Assert.AreEqual(new Coordinate(5 + 4, 5 + 1), tblock.Offset);
             tblock.Move(-7, -4);
-            Assert.AreEqual(new Coordinate(-2, 1), tblock.position);
+            Assert.AreEqual(new Coordinate(9 - 7, 6 - 4), tblock.Offset);
         }
 
         [TestMethod]

@@ -5,11 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using tetris.src;
 
-namespace tetris.src.Blocks
+namespace tetris.src
 {
     public class OBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
+        public override int BlockId => 4;
+
+        private Coordinate offset = new Coordinate(4, 0);
+
+        public override Coordinate Offset
+        {
+            get { return offset; }
+            set { offset = value; }
+        }
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]
         {

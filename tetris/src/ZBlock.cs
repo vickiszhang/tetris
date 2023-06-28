@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using tetris.src;
 
-namespace tetris.src.Blocks
+namespace tetris.src
 {
     public class ZBlock : Block
     {
         public override Coordinate[][] Coordinates => coordinates;
+        public override int BlockId => 7;
 
         private readonly Coordinate[][] coordinates = new Coordinate[][]
         {

@@ -15,10 +15,10 @@ namespace tetris.src
         public int Rows { get; }
         public int Columns { get; }
 
-        public int this[int row, int col]
+        public int this[int r, int c]
         {
-            get => grid[row, col];
-            set => grid[row, col] = value;
+            get => grid[r, c];
+            set => grid[r, c] = value;
         }
 
         public Board(int rows, int columns)

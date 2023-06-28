@@ -6,35 +6,46 @@ using System.Text;
 using System.Threading.Tasks;
 using tetris.src;
 
-namespace tetris.src.Blocks
+namespace tetris.src
 {
     public abstract class Block
     {
-        public virtual Coordinate[][] Coordinates { get; } = null!;
+        public abstract Coordinate[][] Coordinates { get; }
+        public abstract int BlockId { get; }
+
+        protected Coordinate offset = new(4, 1);
+
+        public virtual Coordinate Offset
+        {
+            get { return offset; }
+            set { offset = value; }
+        }
+
         public Coordinate[] DefaultOrientation { get; set; }
 
         public Coordinate[] CurrentOrientation { get; set; }
 
-        public Coordinate position = new(0, 0);
-        public int BlockId { get; set; }
-
         public static int BlockCount { get; set; } = 0;
-
-
 
         protected Block()
         {
             BlockCount++;
             DefaultOrientation = Coordinates[0];
             CurrentOrientation = Coordinates[0];
-            BlockId = BlockCount;
             
+        }
+
+        public IEnumerable<Coordinate> WithOffset()
+        {
+            foreach (Coordinate c in CurrentOrientation)
+            {
+                yield return new Coordinate(c.X + Offset.X, c.Y + Offset.Y);
+            }
         }
 
         public void Move(int x, int y)
         {
-            position.X += x;
-            position.Y += y;
+            Offset = new Coordinate(Offset.X + x, Offset.Y + y);
         }
 
         public void RotateLeft()
@@ -53,9 +64,10 @@ namespace tetris.src.Blocks
 
         }
 
-        public void ResetOrientation()
+        public virtual void ResetOrientation()
         {
             CurrentOrientation = DefaultOrientation;
+            Offset = new Coordinate(4, 1); // TODO: fix O/I block offset
         }
     }
 }
