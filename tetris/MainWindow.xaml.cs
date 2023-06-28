@@ -94,6 +94,16 @@ namespace tetris
             DrawBlock(gameState.ActiveBlock);
         }
 
+        private async Task GameLoop()
+        {
+            Draw(gameState);
+            while (!gameState.GameOver)
+            {
+                await (Task.Delay(500));
+                gameState.MoveDown();
+                Draw(gameState);
+            }
+        }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -124,9 +134,9 @@ namespace tetris
             Draw(gameState);
         }
 
-        private void GameCanvas_Loaded(object sender, RoutedEventArgs e)
+        private async void GameCanvas_Loaded(object sender, RoutedEventArgs e)
         {
-            Draw(gameState);
+            await GameLoop();
         }
 
         private void PlayAgain_Click(object sender, RoutedEventArgs e)
