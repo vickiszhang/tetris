@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <None Remove="src\assets\backdrop.jpg" />
-    <None Remove="src\assets\background.jpg" />
     <None Remove="src\assets\Iblock1.png" />
     <None Remove="src\assets\Lblock3.png" />
     <None Remove="src\assets\Oblock4.png" />
@@ -32,9 +31,6 @@
 
   <ItemGroup>
     <Content Include="src\assets\backdrop.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\assets\background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="src\assets\Tblock6.png" />
