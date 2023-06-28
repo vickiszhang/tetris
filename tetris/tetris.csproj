@@ -16,6 +16,12 @@
 
   <ItemGroup>
     <None Remove="src\assets\background.jpg" />
+    <None Remove="src\assets\Iblock1.png" />
+    <None Remove="src\assets\Lblock3.png" />
+    <None Remove="src\assets\Oblock4.png" />
+    <None Remove="src\assets\Sblock5.png" />
+    <None Remove="src\assets\Tblock6.png" />
+    <None Remove="src\assets\Zblock7.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +32,12 @@
     <Content Include="src\assets\background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="src\assets\Tblock6.png" />
+    <Resource Include="src\assets\Iblock1.png" />
+    <Resource Include="src\assets\Lblock3.png" />
+    <Resource Include="src\assets\Oblock4.png" />
+    <Resource Include="src\assets\Sblock5.png" />
+    <Resource Include="src\assets\Zblock7.png" />
     <Resource Include="src\Block.cs" />
     <Resource Include="src\IBlock.cs" />
     <Resource Include="src\JBlock.cs" />

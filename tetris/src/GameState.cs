@@ -9,16 +9,14 @@ namespace tetris.src
 {
     public class GameState
     {
-        private bool GameOver {  get; set; }
+        public bool GameOver {  get; set; }
         private int Score { get; set; }
         private Queue BlockQueue { get; }
-        private Block ActiveBlock { get; set; }
-        private Board Board { get; }
+        public Block ActiveBlock { get; set; }
+        public Board Board { get; }
 
         public GameState()
         {
-            GameOver = IsGameOver();
-            Score = 0;
             BlockQueue = new Queue();
             ActiveBlock = BlockQueue.NewRandomBlock();
             Board = new Board(rows: 22, columns: 10);
@@ -92,7 +90,7 @@ namespace tetris.src
             {
                 Board[c.Y, c.X] = ActiveBlock.BlockId;
             }
-            Board.ClearFullRows();
+            Score += Board.ClearFullRows();
 
             if (IsGameOver())
             {
