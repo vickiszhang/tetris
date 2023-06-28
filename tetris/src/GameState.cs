@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tetris.src;
+using Queue = tetris.src.Queue;
 
 namespace tetris.src
 {
@@ -12,7 +13,18 @@ namespace tetris.src
         public bool GameOver {  get; set; }
         private int Score { get; set; }
         private Queue BlockQueue { get; }
-        public Block ActiveBlock { get; set; }
+        private Block activeBlock;
+
+        public Block ActiveBlock
+        {
+            get => activeBlock;
+            private set
+            {
+                activeBlock = value;
+                activeBlock.ResetOrientation();
+            }
+        }
+
         public Board Board { get; }
 
         public GameState()
