@@ -27,7 +27,7 @@ namespace tetris
         {
             new BitmapImage(new Uri("src/assets/TileEmpty.png", UriKind.Relative)),
             new BitmapImage(new Uri("src/assets/Iblock1.png", UriKind.Relative)),
-            new BitmapImage(new Uri("src/assets/Iblock1.png", UriKind.Relative)), // TODO: get a new colour
+            new BitmapImage(new Uri("src/assets/Jblock2.png", UriKind.Relative)),
             new BitmapImage(new Uri("src/assets/Lblock3.png", UriKind.Relative)),
             new BitmapImage(new Uri("src/assets/Oblock4.png", UriKind.Relative)),
             new BitmapImage(new Uri("src/assets/Sblock5.png", UriKind.Relative)),
