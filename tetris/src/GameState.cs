@@ -12,7 +12,7 @@ namespace tetris.src
     {
         public bool GameOver {  get; set; }
         private int Score { get; set; }
-        private Queue BlockQueue { get; }
+        public Queue BlockQueue { get; }
         private Block activeBlock;
 
         public Block ActiveBlock

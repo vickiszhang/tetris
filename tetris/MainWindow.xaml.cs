@@ -35,6 +35,18 @@ namespace tetris
             new BitmapImage(new Uri("src/assets/Zblock7.png", UriKind.Relative)),
         };
 
+        private readonly ImageSource[] blockIcons = new ImageSource[]
+{
+            new BitmapImage(new Uri("src/assets/IconEmpty.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/Iblock1Icon.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/Jblock2Icon.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/Lblock3Icon.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/Oblock4Icon.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/Sblock5Icon.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/Tblock6Icon.png", UriKind.Relative)),
+            new BitmapImage(new Uri("src/assets/Zblock7Icon.png", UriKind.Relative)),
+};
+
         private readonly Image[,] imageControls;
 
         private GameState gameState = new GameState();
@@ -95,6 +107,13 @@ namespace tetris
             DrawBoard(gameState.Board);
             DrawGhostBlock(gameState.ActiveBlock);
             DrawBlock(gameState.ActiveBlock);
+            DrawNextBlock(gameState.BlockQueue);
+        }
+
+        private void DrawNextBlock(Queue blockQueue)
+        {
+            Block next = blockQueue.NextBlock;
+            NextImage.Source = blockIcons[next.BlockId];
         }
 
         private void DrawGhostBlock(Block block)
