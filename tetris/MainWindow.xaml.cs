@@ -58,7 +58,7 @@ namespace tetris
                         Width = cellSize,
                         Height = cellSize
                     };
-                    Canvas.SetTop(imageControl, (r - 2) * cellSize);
+                    Canvas.SetTop(imageControl, r * cellSize);
                     Canvas.SetLeft(imageControl,  c * cellSize);
                     GameCanvas.Children.Add(imageControl);
                     imageControls[r, c] = imageControl;
@@ -103,6 +103,7 @@ namespace tetris
                 gameState.MoveDown();
                 Draw(gameState);
             }
+            GameOverMenu.Visibility = Visibility.Visible;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -139,9 +140,11 @@ namespace tetris
             await GameLoop();
         }
 
-        private void PlayAgain_Click(object sender, RoutedEventArgs e)
+        private async void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
-
+            gameState = new GameState();
+            GameOverMenu.Visibility = Visibility.Hidden;
+            await GameLoop();
         }
     }
 }
