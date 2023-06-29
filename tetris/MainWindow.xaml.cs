@@ -74,6 +74,7 @@ namespace tetris
                 for (int c = 0; c < board.Columns; c++)
                 {
                     int id = board[r, c];
+                    imageControls[r, c].Opacity = 1;
                     imageControls[r, c].Source = blockTiles[id];
                 }
             }
@@ -84,6 +85,7 @@ namespace tetris
         {
             foreach (Coordinate c in block.WithOffset())
             {
+                imageControls[c.Y, c.X].Opacity = 1;
                 imageControls[c.Y, c.X].Source = blockTiles[block.BlockId];
             }
         }
@@ -91,7 +93,18 @@ namespace tetris
         private void Draw(GameState gameState)
         {
             DrawBoard(gameState.Board);
+            DrawGhostBlock(gameState.ActiveBlock);
             DrawBlock(gameState.ActiveBlock);
+        }
+
+        private void DrawGhostBlock(Block block)
+        {
+            int dropDistance = gameState.GetDropDistance();
+            foreach (Coordinate c in block.WithOffset())
+            {
+                imageControls[c.Y + dropDistance, c.X].Opacity = 0.20;
+                imageControls[c.Y + dropDistance, c.X].Source = blockTiles[block.BlockId];
+            }
         }
 
         private async Task GameLoop()

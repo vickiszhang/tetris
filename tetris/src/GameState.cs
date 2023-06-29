@@ -114,18 +114,7 @@ namespace tetris.src
             }
         }
 
-        private int GetHardDropDistance(Coordinate c)
-        {
-            int drop = 0;
-            while (Board.IsEmpty(c.Y + drop + 1, c.X))
-            {
-                drop++;
-            }
-
-            return drop;
-        }
-
-        public void HardDrop()
+        public int GetDropDistance()
         {
             int dropDistance = Board.Rows;
             foreach (Coordinate c in ActiveBlock.WithOffset())
@@ -133,7 +122,24 @@ namespace tetris.src
                 dropDistance = System.Math.Min(dropDistance, GetHardDropDistance(c));
             }
 
-            ActiveBlock.Move(0, dropDistance);
+            return dropDistance;
+
+
+            int GetHardDropDistance(Coordinate c)
+            {
+                int drop = 0;
+                while (Board.IsEmpty(c.Y + drop + 1, c.X))
+                {
+                    drop++;
+                }
+
+                return drop;
+            }
+        }
+
+        public void HardDrop()
+        {
+            ActiveBlock.Move(0, GetDropDistance());
             PlaceBlock();
         }
 
