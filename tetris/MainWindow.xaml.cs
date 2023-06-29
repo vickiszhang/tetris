@@ -58,7 +58,7 @@ namespace tetris
                         Width = cellSize,
                         Height = cellSize
                     };
-                    Canvas.SetTop(imageControl, r * cellSize);
+                    Canvas.SetTop(imageControl, (r-1) * cellSize);
                     Canvas.SetLeft(imageControl,  c * cellSize);
                     GameCanvas.Children.Add(imageControl);
                     imageControls[r, c] = imageControl;
@@ -128,6 +128,9 @@ namespace tetris
                     break;
                 case Key.Z:
                     gameState.RotateLeft();
+                    break;
+                case Key.Space:
+                    gameState.HardDrop();
                     break;
                 default:
                     return;

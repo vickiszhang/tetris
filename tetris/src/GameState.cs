@@ -31,7 +31,7 @@ namespace tetris.src
         {
             BlockQueue = new Queue();
             ActiveBlock = BlockQueue.NewRandomBlock();
-            Board = new Board(rows: 22, columns: 10);
+            Board = new Board(rows: 23, columns: 10);
         }
 
         private bool IsGameOver()
@@ -112,6 +112,29 @@ namespace tetris.src
             {
                 ActiveBlock = BlockQueue.NewRandomBlock();
             }
+        }
+
+        private int GetHardDropDistance(Coordinate c)
+        {
+            int drop = 0;
+            while (Board.IsEmpty(c.Y + drop + 1, c.X))
+            {
+                drop++;
+            }
+
+            return drop;
+        }
+
+        public void HardDrop()
+        {
+            int dropDistance = Board.Rows;
+            foreach (Coordinate c in ActiveBlock.WithOffset())
+            {
+                dropDistance = System.Math.Min(dropDistance, GetHardDropDistance(c));
+            }
+
+            ActiveBlock.Move(0, dropDistance);
+            PlaceBlock();
         }
 
     }
