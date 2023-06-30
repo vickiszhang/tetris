@@ -47,6 +47,10 @@ namespace tetris
             new BitmapImage(new Uri("src/assets/Zblock7Icon.png", UriKind.Relative)),
 };
 
+        private int startDelay = 500;
+        private int endDelay = 25;
+        private int delayFactor = 10;
+
         private readonly Image[,] imageControls;
 
         private GameState gameState = new GameState();
@@ -145,7 +149,8 @@ namespace tetris
             Draw(gameState);
             while (!gameState.GameOver)
             {
-                await (Task.Delay(500));
+                int delay = Math.Max(endDelay, startDelay - (gameState.Score * delayFactor));
+                await (Task.Delay(delay));
                 gameState.MoveDown();
                 Draw(gameState);
             }
