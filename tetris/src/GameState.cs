@@ -11,9 +11,11 @@ namespace tetris.src
     public class GameState
     {
         public bool GameOver {  get; set; }
-        private int Score { get; set; }
-        private Queue BlockQueue { get; }
+        public int Score { get; set; }
+        public Queue BlockQueue { get; }
         private Block activeBlock;
+        public Block holdBlock;
+        public bool CanHold { get; private set; }
 
         public Block ActiveBlock
         {
@@ -31,7 +33,8 @@ namespace tetris.src
         {
             BlockQueue = new Queue();
             ActiveBlock = BlockQueue.NewRandomBlock();
-            Board = new Board(rows: 22, columns: 10);
+            Board = new Board(rows: 23, columns: 10);
+            CanHold = true;
         }
 
         private bool IsGameOver()
@@ -111,8 +114,60 @@ namespace tetris.src
             else
             {
                 ActiveBlock = BlockQueue.NewRandomBlock();
+                CanHold = true;
             }
         }
 
+        public int GetDropDistance()
+        {
+            int dropDistance = Board.Rows;
+            foreach (Coordinate c in ActiveBlock.WithOffset())
+            {
+                dropDistance = System.Math.Min(dropDistance, GetHardDropDistance(c));
+            }
+
+            return dropDistance;
+
+
+            int GetHardDropDistance(Coordinate c)
+            {
+                int drop = 0;
+                while (Board.IsEmpty(c.Y + drop + 1, c.X))
+                {
+                    drop++;
+                }
+
+                return drop;
+            }
+        }
+
+        public void HardDrop()
+        {
+            ActiveBlock.Move(0, GetDropDistance());
+            PlaceBlock();
+        }
+
+        public void HoldBlock()
+        {
+            Block tempHoldBlock = holdBlock;
+            if (!CanHold)
+            {
+                return;
+            }
+            if (holdBlock != null)
+            {
+                holdBlock = ActiveBlock;
+                ActiveBlock = tempHoldBlock;
+
+            }
+            else
+            {
+                holdBlock = ActiveBlock;
+                ActiveBlock = BlockQueue.NewRandomBlock();
+            }
+
+            CanHold = false;
+     
+        }
     }
 }
