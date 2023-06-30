@@ -86,6 +86,7 @@ namespace tetris
             DrawBlock(gameState.ActiveBlock);
             DrawNextBlock(gameState.BlockQueue);
             DrawHoldBlock(gameState.holdBlock);
+            ScoreText.Text = $"Score: {gameState.Score}";
         }
 
         private void DrawBoard(Board board)

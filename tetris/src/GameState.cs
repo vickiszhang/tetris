@@ -11,7 +11,7 @@ namespace tetris.src
     public class GameState
     {
         public bool GameOver {  get; set; }
-        private int Score { get; set; }
+        public int Score { get; set; }
         public Queue BlockQueue { get; }
         private Block activeBlock;
         public Block holdBlock;
