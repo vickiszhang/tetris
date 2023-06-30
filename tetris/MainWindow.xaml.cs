@@ -79,6 +79,15 @@ namespace tetris
             return imageControls;
         }
 
+        private void Draw(GameState gameState)
+        {
+            DrawBoard(gameState.Board);
+            DrawGhostBlock(gameState.ActiveBlock);
+            DrawBlock(gameState.ActiveBlock);
+            DrawNextBlock(gameState.BlockQueue);
+            DrawHoldBlock(gameState.holdBlock);
+        }
+
         private void DrawBoard(Board board)
         {
             for (int r = 0; r < board.Rows; r++)
@@ -102,18 +111,22 @@ namespace tetris
             }
         }
 
-        private void Draw(GameState gameState)
-        {
-            DrawBoard(gameState.Board);
-            DrawGhostBlock(gameState.ActiveBlock);
-            DrawBlock(gameState.ActiveBlock);
-            DrawNextBlock(gameState.BlockQueue);
-        }
-
         private void DrawNextBlock(Queue blockQueue)
         {
             Block next = blockQueue.NextBlock;
             NextImage.Source = blockIcons[next.BlockId];
+        }
+
+        private void DrawHoldBlock(Block block)
+        {
+            if (block == null)
+            {
+                HoldImage.Source = blockIcons[0];
+            }
+            else
+            { 
+                HoldImage.Source = blockIcons[block.BlockId];
+            }
         }
 
         private void DrawGhostBlock(Block block)
@@ -160,6 +173,9 @@ namespace tetris
                     break;
                 case Key.Z:
                     gameState.RotateLeft();
+                    break;
+                case Key.C:
+                    gameState.HoldBlock();
                     break;
                 case Key.Space:
                     gameState.HardDrop();

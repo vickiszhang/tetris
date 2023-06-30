@@ -14,6 +14,8 @@ namespace tetris.src
         private int Score { get; set; }
         public Queue BlockQueue { get; }
         private Block activeBlock;
+        public Block holdBlock;
+        public bool CanHold { get; private set; }
 
         public Block ActiveBlock
         {
@@ -32,6 +34,7 @@ namespace tetris.src
             BlockQueue = new Queue();
             ActiveBlock = BlockQueue.NewRandomBlock();
             Board = new Board(rows: 23, columns: 10);
+            CanHold = true;
         }
 
         private bool IsGameOver()
@@ -111,6 +114,7 @@ namespace tetris.src
             else
             {
                 ActiveBlock = BlockQueue.NewRandomBlock();
+                CanHold = true;
             }
         }
 
@@ -143,5 +147,27 @@ namespace tetris.src
             PlaceBlock();
         }
 
+        public void HoldBlock()
+        {
+            Block tempHoldBlock = holdBlock;
+            if (!CanHold)
+            {
+                return;
+            }
+            if (holdBlock != null)
+            {
+                holdBlock = ActiveBlock;
+                ActiveBlock = tempHoldBlock;
+
+            }
+            else
+            {
+                holdBlock = ActiveBlock;
+                ActiveBlock = BlockQueue.NewRandomBlock();
+            }
+
+            CanHold = false;
+     
+        }
     }
 }
