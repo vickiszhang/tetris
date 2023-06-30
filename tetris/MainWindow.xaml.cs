@@ -155,6 +155,7 @@ namespace tetris
                 Draw(gameState);
             }
             GameOverMenu.Visibility = Visibility.Visible;
+            FinalScoreText.Text = $"Score: {gameState.Score}";
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
