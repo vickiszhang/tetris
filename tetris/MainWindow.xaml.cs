@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,10 @@ namespace tetris
         private int delayFactor = 10;
 
         private readonly Image[,] imageControls;
+
+        Uri blockPlaceSound = new Uri("pack://siteoforigin:,,,/src/sounds/blockPlace.mp3");
+        // SoundPlayer blockPlace = new SoundPlayer(("src/sounds/blockPlace.mp3"));
+        MediaPlayer blockPlace = new MediaPlayer();
 
         private GameState gameState = new GameState();
 
@@ -186,6 +191,9 @@ namespace tetris
                     break;
                 case Key.Space:
                     gameState.HardDrop();
+                    // blockPlace.Load();
+                    blockPlace.Open(new Uri(@"/src/sounds/blockPlace.mp3", UriKind.Relative));
+                    blockPlace.Play();
                     break;
                 default:
                     return;

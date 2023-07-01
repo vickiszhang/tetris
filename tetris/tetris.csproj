@@ -33,6 +33,7 @@
     <None Remove="src\assets\TileEmpty.png" />
     <None Remove="src\assets\Zblock7.png" />
     <None Remove="src\Assets\Zblock7Icon.png" />
+    <None Remove="src\sounds\blockPlace.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,6 +70,9 @@
     <Resource Include="src\LBlock.cs" />
     <Resource Include="src\OBlock.cs" />
     <Resource Include="src\SBlock.cs" />
+    <Content Include="src\sounds\blockPlace.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="src\TBlock.cs" />
     <Resource Include="src\ZBlock.cs" />
   </ItemGroup>

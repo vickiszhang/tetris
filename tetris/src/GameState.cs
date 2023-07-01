@@ -46,7 +46,7 @@ namespace tetris.src
         {
             foreach (Coordinate c in ActiveBlock.WithOffset())
             {
-                if (!Board.IsEmpty(c.Y, c.X)) // TODO: fix this change rc to xy
+                if (!Board.IsEmpty(c.Y, c.X))
                 {
                     return false;
                 }
@@ -62,6 +62,7 @@ namespace tetris.src
                 ActiveBlock.RotateLeft();
             }
         }
+
         public void RotateLeft()
         {
             ActiveBlock.RotateLeft();
