@@ -36,7 +36,10 @@ namespace tetris.src
         public Block NewRandomBlock()
         {
             Block block = NextBlock;
-            NextBlock = GetRandomBlock();
+            while (block.BlockId == NextBlock.BlockId)
+            {
+                NextBlock = GetRandomBlock();
+            } 
             return block;
         }
     }
