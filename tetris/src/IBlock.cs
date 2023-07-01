@@ -28,6 +28,12 @@ namespace tetris.src
             new Coordinate[] {new(0, -1), new(0, 0), new(0, 1), new(0, 2)}
         };
 
+        public override void ResetOrientation()
+        {
+            CurrentOrientation = DefaultOrientation;
+            Offset = new Coordinate(4, 0); 
+        }
+
     }
 
 }

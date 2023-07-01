@@ -67,7 +67,7 @@ namespace tetris.src
         public virtual void ResetOrientation()
         {
             CurrentOrientation = DefaultOrientation;
-            Offset = new Coordinate(4, 1); // TODO: fix O/I block offset
+            Offset = new Coordinate(4, 1);
         }
     }
 }
