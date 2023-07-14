@@ -41,7 +41,7 @@
                    Grid.Row="1"
                    Grid.Column="0"
                    Text="Score: "
-                   Margin="0,0"
+                   Margin="0,40"
                    TextAlignment="Center"/>
         <StackPanel Grid.Row="1"
                     Grid.Column="0"

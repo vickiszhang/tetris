@@ -163,6 +163,11 @@ namespace tetris
             FinalScoreText.Text = $"Score: {gameState.Score}";
         }
 
+        private async Task GarbageModeGameLoop()
+        {
+
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (gameState.GameOver)
